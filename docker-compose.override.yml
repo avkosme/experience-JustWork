@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  runserver:
+    command: .bin/run.sh
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+    environment:
+      - SECRET_KEY=asdasd5!22434%66744dfsdfssdfs!s9ssdj
+      - POSTGRES_NAME=database
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432  
+  postgres:
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=user
+      - POSTGRES_DB=database
+    ports:
+      - 5432:5432
