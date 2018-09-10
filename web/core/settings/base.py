@@ -136,3 +136,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100
 }
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_IMPORTS = 'tasks.queue'
+CELERY_BROKER_POOL_LIMIT = None
+CELERY_TIMEZONE = env('TZ')
+CELERY_ENABLE_UTC = True

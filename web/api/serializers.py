@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from page.models import Page
+from content.models import Video
 
 
 class PageSerializer(serializers.ModelSerializer):
@@ -11,3 +12,9 @@ class PageSerializer(serializers.ModelSerializer):
 
     def get_detail_url(self, obj):
         return '/'.join(('/page', str(obj.pk)))
+
+
+class VideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Video
+        fields = '__all__'

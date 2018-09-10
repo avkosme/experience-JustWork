@@ -41,7 +41,7 @@ class Video(models.Model):
     )
 
     def __str__(self):
-        return ' '.join((str(self.title), str(self.url_file)))
+        return ' '.join((str(self.title), str(self.url_file), str(self.counter)))
 
     class Meta:
         verbose_name = 'Видео контент'
@@ -90,7 +90,7 @@ class Audio(models.Model):
     )
 
     def __str__(self):
-        return ' '.join((str(self.title), str(self.url_file)))
+        return ' '.join((str(self.title), str(self.url_file), str(self.counter)))
 
     class Meta:
         verbose_name = 'Аудио контент'
@@ -124,8 +124,8 @@ class Text(models.Model):
     )
 
     def __str__(self):
-        return ' '.join((str(self.title)))
+        return ' '.join((str(self.title), str(self.counter)))
 
     class Meta:
-        verbose_name = 'Аудио контент'
-        verbose_name_plural = 'Аудио контент'
+        verbose_name = 'Текст'
+        verbose_name_plural = 'Текст'
