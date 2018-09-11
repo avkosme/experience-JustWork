@@ -3,7 +3,17 @@ version: '3'
 services:
 
   runserver:
-    image: 'avkosme/python3.6.6'
+    image: avkosme/django
+    working_dir: /opt/webapp/web
+    depends_on:
+      - postgres
+      - celery
+      - redis
+    volumes:
+      - .:/opt/webapp
+
+  autotests:
+    image: avkosme/django
     working_dir: /opt/webapp/web
     depends_on:
       - postgres
@@ -13,18 +23,18 @@ services:
       - .:/opt/webapp
 
   postgres:
-    image: 'postgres:10'
+    image: postgres:10
     volumes:
       - postgres:/var/lib/pgsql/10/data/
 
   celery:
-    image: 'avkosme/celery'
+    image: avkosme/django
     working_dir: /opt/webapp/web
     volumes:
       - .:/opt/webapp
 
   redis:
-    image: 'redis:latest'
+    image: redis:latest
 
 volumes:
   postgres:

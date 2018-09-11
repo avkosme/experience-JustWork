@@ -16,6 +16,17 @@ services:
       - POSTGRES_PORT=5432
       - TZ=Europe/Moscow
 
+  autotests:
+    command: .bin/run-autotests.sh
+    environment:
+      - SECRET_KEY=asdasd5!22434%66744dfsdfssdfs!s9ssdj
+      - POSTGRES_NAME=database
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - TZ=Europe/Moscow
+
   postgres:
     environment:
       - POSTGRES_PASSWORD=password
@@ -25,6 +36,7 @@ services:
       - 5432:5432
 
   celery:
+    command: .bin/run-celery.sh
     privileged: true
     environment:
       - SECRET_KEY=asdasd5!22434%66744dfsdfssdfs!s9ssdj
@@ -34,6 +46,3 @@ services:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
       - TZ=Europe/Moscow
-      - WORK_DIR=/opt/webapp/web/
-      - MODULE=tasks.queue
-      - REQUIREMENTS=/opt/webapp/web/core/requirements/staging.txt

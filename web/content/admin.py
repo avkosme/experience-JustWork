@@ -16,6 +16,9 @@ class TextAdmin(admin.ModelAdmin):
     readonly_fields = ['counter']
     search_fields = ['title']
 
+    class Media:
+        js = ('js/tinymce/tinymce.min.js', 'js/tinymce/tiny-init.js')
+
 
 admin.site.register(Video, VideoAdmin)
 admin.site.register(Audio, AudioAdmin)

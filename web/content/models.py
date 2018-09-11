@@ -115,6 +115,12 @@ class Text(models.Model):
         blank=False,
         max_length=150,
     )
+    content = models.TextField(
+        verbose_name='Содержимое текста',
+        help_text='Содержимое текста',
+        blank=False,
+        max_length=50000,
+    )
 
     counter = models.BigIntegerField(
         verbose_name='Счетчик просмотров',

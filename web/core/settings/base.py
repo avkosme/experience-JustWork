@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'page.apps.PageConfig',
-    'content.apps.ContentConfig'
+    'content.apps.ContentConfig',
+    'api.v1.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
+    # 'DEFAULT_VERSIONING_CLASS': 'core.middleware.version.AcceptHeaderVersioningRequired',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 100
 }
